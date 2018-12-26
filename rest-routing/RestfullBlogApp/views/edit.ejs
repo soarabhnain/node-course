@@ -1,0 +1,8 @@
+<h1>Edit Blog</h1>
+
+<form action="/blogs/<%= blog._id %>?_method=PUT" method="POST">
+    <input type="text" name="blog[title]" value="<%= blog.title %>" placeholder="Title">
+    <input type="text" name="blog[image]" value="<%= blog.image %>" placeholder="Image">
+    <input type="text" name="blog[body]" value="<%= blog.body %>" placeholder="Description">
+    <button type="submit">Submit</button>
+</form>
