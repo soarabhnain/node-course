@@ -1,6 +1,7 @@
 var express = require('express'),
 passport = require('passport'),
 LocalStrategy = require('passport-local'),
+methodOverride = require('method-override');
 passportLocalMongoose = require('passport-local-mongoose');
 var app = express();
 
@@ -29,6 +30,8 @@ var seedDB = require('./seeds');
 
 
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(methodOverride("_method"));
 
 app.use(require('express-session')({
     secret:"I am in office",
