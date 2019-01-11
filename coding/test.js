@@ -28,25 +28,6 @@ function add(x){
 
 
 
-function add(x){
-    if(arguments.length>1){
-        let sum = 0;
-        for(var i=0;i<arguments.length;i++){
-            sum = sum + arguments[i];
-        }
-        return sum;
-    }
-    return (function(y){
-        if(typeof y !== 'undefined'){
-            x=x+y;
-            return arguments.callee;
-        } else{
-            return x;
-        }
-    })();
-}
-
-
 // 3. Factorial
 
 function fact(n){
@@ -144,3 +125,50 @@ for(var i=1;i<=100;i++){
     if(i%5===0){out+="buzz";}
     console.log(out || i);
 }
+
+
+//12. Max product of the array
+
+var unsortedArray = [-10, 7, 29, 30, 5, -10, -70];
+
+function sortIntegers(a,b){
+    return a-b;
+}
+
+function maxProduct(unsorted){
+    var sorted = unsorted.sort(sortIntegers);
+
+    var product1 = 1;
+    var product2 = 1;
+    
+    var elementCount = sorted.length-1;
+
+    product1=sorted[elementCount]*sorted[elementCount-1]*sorted[elementCount-2];
+
+    product2 = sorted[0]*sorted[1]*sorted[elementCount];
+
+    if(product1>product2){
+        return product1;
+    } else {
+        return product2;
+    }
+}
+
+
+//13. is Prime
+
+function isPrime(num){
+    s = Math.sqrt(num);
+    for(var i=2;i<s;i++){
+        if(num%i===0){
+            return false;
+        }
+        return true;
+    }
+}
+
+// 14. 
+
+for (var i = 0; i < 4; i++) {
+    (setTimeout(() => console.log(i), 0))(i);
+  }
