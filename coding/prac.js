@@ -35,3 +35,21 @@ for(var i=1;i<=100;i++){
     if(i%5===0){out+="buzz"}
     console.log(out || i);
 }
+
+function mul(x){
+    if(arguments.length>1){
+        var product = 1;
+        for(var i=0;i<arguments.length;i++){
+            product *=arguments[i];
+        }
+        return product;
+    }
+    return function product(y) {
+        if(typeof y !='undefined'){
+            x *= y;
+            return product;
+        } else{
+            return x;
+        }
+    }
+}

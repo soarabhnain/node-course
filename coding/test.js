@@ -166,6 +166,18 @@ function isPrime(num) {
 
 // 14. 
 
-for (var i = 0; i < 4; i++) {
-    (setTimeout(() => console.log(i), 0))(i);
-  }
+function getPosts(){
+    return new Promise(function(resolve, reject){
+        $.ajax({
+            url:"https://jsonplaceholder.typicode.com/posts",
+            type:'GET',
+            success: function(posts) {
+                resolve(posts);
+                console.log(posts);
+            },
+            error: function() {
+                reject("Error Occurred");
+            }
+        });
+    });
+}
