@@ -19,3 +19,16 @@ body{
     line-height: 1.65;
     padding: 20px 50px;
 }
+
+.wrap{
+    box-sizing: border-box;
+}
+
+.col{
+    height: 100px;
+    margin: 20px;
+}
+
+div:nth-child(3){
+    text-decoration: underline;
+}
