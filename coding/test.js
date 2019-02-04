@@ -157,18 +157,121 @@ function maxProduct(unsorted){
 
 //13. is Prime
 
-function isPrime(num){
-    s = Math.sqrt(num);
-    for(var i=2;i<s;i++){
-        if(num%i===0){
-            return false;
-        }
-        return true;
+function isPrime(num) {
+    for(var i = 2; i < num; i++){
+      if(num % i === 0) return false;
     }
-}
+    return num!==1 && num!==0;
+  }
 
 // 14. 
 
-for (var i = 0; i < 4; i++) {
-    (setTimeout(() => console.log(i), 0))(i);
-  }
+function getPosts(){
+    return new Promise(function(resolve, reject){
+        $.ajax({
+            url:"https://jsonplaceholder.typicode.com/posts",
+            type:'GET',
+            success: function(posts) {
+                resolve(posts);
+                console.log(posts);
+            },
+            error: function() {
+                reject("Error Occurred");
+            }
+        });
+    });
+}
+
+
+// 15.
+
+class Vehicle{
+    constructor(make, model, year){
+        this.make = make;
+        this.model = model;
+        this.year = year;
+    }
+}
+
+class Car extends Vehicle{
+    constructor(noOfWheels){
+        super();
+        this.noOfWheels = noOfWheels;
+    }
+}
+
+class Bike extends Vehicle{
+    constructor(noOfWheels){
+        super();
+        this.noOfWheels = noOfWheels;
+    }
+}
+
+// 16. Repeated counted in array
+
+function repeaters(arr){
+    var sorted = arr.sort();
+
+    var count = 1;
+    var results = "";
+
+    for(var i=0;i<sorted.length;i++){
+        if(arr[i] == arr[i+1]){
+            count += 1;
+        } else{
+            results += arr[i] + " is repeated " + count + " times \n";
+            count=1;
+        }
+    }
+    return results;
+}
+
+// 17. Singleton Design Pattern
+
+var mySingleton = (function(){
+    var instance;
+
+    function init(){
+        var privateRandomNumber = Math.random();
+        var privateFunction = function(){
+            console.log("I am private function");
+        };
+        return {
+            getRandomNumber: function(){
+                return privateRandomNumber;
+            }
+        };
+    }
+    return {
+        getInstance: function(){
+            if(!instance){
+                instance = init();
+            } else{
+                return instance;
+            }
+        }
+    };
+})();
+
+var singleA = mySingleton.getInstance();
+var singleB = mySingleton.getInstance();
+singleA.getRandomNumber() == singleB.getRandomNumber() //Same random number
+
+
+
+// 18. Module Design Pattern
+
+//Modules are called classes.
+
+var htmlChanger = (function(){
+    var contents = 'contents';
+    var changeHtml = function(){
+        console.log("Changed html");
+    };
+    return {
+        callChangeHtml: function(){
+            htmlChanger();
+            console.log(contents);
+        }
+    };
+})();
